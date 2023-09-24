@@ -2,7 +2,7 @@
     import ClinicListTile from "$lib/components/clinics/list_tile/ClinicListTile.svelte";
     import ClinicListTileSkeleton from "$lib/components/clinics/list_tile/ClinicListTileSkeleton.svelte";
     import { Api } from "$lib/utils/api";
-    import type { Clinic } from "../../../models/clinic";
+    import type { Clinic } from "../../models/clinic";
     import { onMount } from "svelte";
 
     let clinics: Clinic[] = [];
