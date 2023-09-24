@@ -16,17 +16,9 @@
   });
 </script>
 
-<div class="app bg-gray-50">
-  <main>
-    <CustomNavbar />
-    <div class="w-full p-6">
-      <slot />
-    </div>
-  </main>
-
-  <footer>
-    <p>
-      visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit
-    </p>
-  </footer>
-</div>
+<main class="app bg-gray-50 h-full">
+  <CustomNavbar />
+  <div class="w-full h-full">
+    <slot />
+  </div>
+</main>

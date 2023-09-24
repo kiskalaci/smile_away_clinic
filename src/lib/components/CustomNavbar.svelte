@@ -3,12 +3,12 @@
   import { LL } from "$lib/i18n/i18n-svelte";
   import logo from "$lib/images/logo_h.png";
   import {
-    Avatar,
-    NavBrand,
-    NavHamburger,
-    NavLi,
-    NavUl,
-    Navbar,
+      Avatar,
+      NavBrand,
+      NavHamburger,
+      NavLi,
+      NavUl,
+      Navbar,
   } from "flowbite-svelte";
   import AccountBadgeDropDown from "./AccountBadgeDropDown.svelte";
   import LanguageSelectModal from "./modals/LanguageSelectModal.svelte";
@@ -16,7 +16,7 @@
   let showLanguageSelectModal: boolean = false;
 </script>
 
-<Navbar let:hidden let:toggle color="none">
+<Navbar let:hidden let:toggle color="light" navClass="shadow-md py-2">
   <NavBrand href="/">
     <img src={logo} class="mr-3 h-6 sm:h-9" alt="DentMe Logo" />
   </NavBrand>
@@ -30,9 +30,8 @@
   <AccountBadgeDropDown />
   <NavUl {hidden}>
     <NavLi href="/" active={$page.url.href.endsWith("/")}>{$LL.Home()}</NavLi>
-    <NavLi href="/about" active={$page.url.href.endsWith("/about")}
-      >{$LL.About()}</NavLi
-    >
+    <NavLi href="/clinic_profile" active={$page.url.href.endsWith("/clinic_profile")}>{$LL.Clinic()} {$LL.Settings().toLowerCase()}</NavLi>
+    
 
     <NavLi on:click={() => (showLanguageSelectModal = true)}>
       <div class="flex">
