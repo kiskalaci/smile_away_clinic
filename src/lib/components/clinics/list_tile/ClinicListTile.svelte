@@ -1,14 +1,13 @@
 <script lang="ts">
   import Image from "$lib/components/Image.svelte";
-  import { onMount } from "svelte";
-  import { notEmpty } from "$lib/utils/list_filter";
   import errorImage from "$lib/images/error_image.png";
   import type { Clinic } from "$lib/models/clinic";
+  import { notEmpty } from "$lib/utils/list_filter";
+  import { onMount } from "svelte";
   export let clinic: Clinic;
 
   const languages = ["hu", "de", "en"];
   let urls: string[] = [];
-  let favorite = false;
   let show = "hidden";
   let index = 0;
 
@@ -19,11 +18,6 @@
       return;
     }
     index = desiredIndex;
-  }
-
-  function toggle(e: Event) {
-    e.preventDefault();
-    favorite = !favorite;
   }
 
   function handleMouseOver() {
@@ -51,14 +45,6 @@
 >
   <a href="/clinics/{clinic.id}">
     <div class="relative aspect-square">
-      <button type="button" class=" absolute top-4 right-4" on:click={toggle}>
-        {#if favorite}
-          <i class="fa-solid fa-heart fa-xl text-red-500" />
-        {:else}
-          <i class="fa-regular fa-heart fa-xl text-gray-400" />
-        {/if}
-      </button>
-
       {#each urls as url, i}
         <Image
           src={url}

@@ -12,10 +12,10 @@
   import Cookies from "js-cookie";
   import LL from "$lib/i18n/i18n-svelte";
   import { setTokenCookie, authStatus } from "$lib/utils/auth";
-  import { username } from "$lib/utils/username";
   import { SignInState } from "$lib/enums/sign_in_state";
   import { AuthStatus } from "$lib/enums/auth_status";
   import type { User } from "$lib/models/user";
+  import { username } from "$lib/stores/username";
 
   export let showModal: boolean;
   export let state: SignInState;

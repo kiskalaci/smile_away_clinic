@@ -4,9 +4,9 @@
     import { SignInState } from "$lib/enums/sign_in_state";
     import LL from "$lib/i18n/i18n-svelte";
     import type { User } from "$lib/models/user";
+    import { username } from "$lib/stores/username";
     import { Api } from "$lib/utils/api";
     import { authStatus, setTokenCookie } from "$lib/utils/auth";
-    import { username } from "$lib/utils/username";
     import { isEmail, isPassword } from "$lib/utils/validation";
     import {
         Button,
@@ -18,8 +18,8 @@
 
     export let state: SignInState = SignInState.login;
 
-    let email: string = "dankollner12@gmail.com";
-    let password: string = "Test2021";
+    let email: string = "proba@gmail.com";
+    let password: string = "Test2020";
     let confirmPassword: string;
     let validationMessage: string;
     let showValidationMessage: boolean;

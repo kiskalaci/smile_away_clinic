@@ -1,5 +1,6 @@
 <script lang="ts">
-    import Clinics from "$lib/components/clinic_profile/tabs/clinics.svelte";
+    import ClinicList from "$lib/components/clinic_profile/tabs/clinic_list.svelte";
+    import Clinics from "$lib/components/clinic_profile/tabs/clinic_list.svelte";
     import LL from "$lib/i18n/i18n-svelte";
     let tabs = [$LL.Clinics(), "Doctors", "Equipments", "Specialities"];
     let index: number = 0;
@@ -24,7 +25,7 @@
     </div>
     <div class="p-6 w-full h-full">
         {#if index == 0}
-            <Clinics />
+            <ClinicList />
         {:else if index == 1}
             <label for={index.toString()}>body:{index}</label>
         {:else}

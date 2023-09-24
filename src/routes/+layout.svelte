@@ -11,11 +11,14 @@
   import Cookies from "js-cookie";
   import { onMount } from "svelte";
   import { Spinner } from "flowbite-svelte";
+  import { selectedClinicId } from "$lib/stores/selected_clinic";
+  import ClinicSelect from "$lib/components/clinics/clinic_select.svelte";
+  import { subscribe } from "svelte/internal";
   let loading: boolean = true;
-
   onMount(() => {
     const token = Cookies.get("auth_token");
     $authStatus = token ? AuthStatus.authenticated : AuthStatus.unauthenticated;
+    loading = false;
   });
 </script>
 
@@ -23,7 +26,11 @@
   {#if $authStatus == AuthStatus.authenticated}
     <CustomNavbar />
     <div class="w-full h-full">
-      <slot />
+      {#if $selectedClinicId !== ""}
+        <slot />
+      {:else}
+        <ClinicSelect />
+      {/if}
     </div>
   {:else}
     <div class="w-full h-full flex justify-center items-center">

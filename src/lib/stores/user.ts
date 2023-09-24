@@ -1,6 +1,7 @@
 import { browser } from "$app/environment";
+import type { User } from "$lib/models/user";
 import { writable } from "svelte/store";
-import type { User } from "../../models/user";
+
 
 const userDetails = browser && localStorage.getItem("user");
 
