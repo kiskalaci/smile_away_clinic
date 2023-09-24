@@ -13,12 +13,12 @@
   import LL from "$lib/i18n/i18n-svelte";
   import { setTokenCookie, authStatus } from "$lib/utils/auth";
   import { username } from "$lib/utils/username";
-  import { SignInModalState } from "$lib/enums/sign_in_modal_state";
+  import { SignInState } from "$lib/enums/sign_in_state";
   import { AuthStatus } from "$lib/enums/auth_status";
-    import type { User } from "$lib/models/user";
+  import type { User } from "$lib/models/user";
 
   export let showModal: boolean;
-  export let state: SignInModalState;
+  export let state: SignInState;
 
   let email: string = "dankollner12@gmail.com";
   let password: string = "Test2021";
@@ -32,7 +32,7 @@
   $: passwordValid = isPassword(password);
   $: passwordsMatch = password == confirmPassword;
   $: formIsValid =
-    (emailValid && passwordValid && state == SignInModalState.login) ||
+    (emailValid && passwordValid && state == SignInState.login) ||
     passwordsMatch;
   $: formData = {
     user: {
@@ -43,15 +43,15 @@
   };
 
   function _toggleState() {
-    if (state == SignInModalState.login) {
-      state = SignInModalState.register;
+    if (state == SignInState.login) {
+      state = SignInState.register;
     } else {
-      state = SignInModalState.login;
+      state = SignInState.login;
     }
   }
 
   async function _submit(e: Event) {
-    if (state === SignInModalState.login) {
+    if (state === SignInState.login) {
       _logIn(e);
     } else {
       _register(e);
@@ -133,7 +133,7 @@
     if (!passwordValid) {
       validationMessage = $LL.PasswordValidation();
     }
-    if (state == SignInModalState.register && !passwordsMatch) {
+    if (state == SignInState.register && !passwordsMatch) {
       validationMessage = $LL.PasswordsDoNotMatch();
     }
     return false;
@@ -154,7 +154,7 @@
 <Modal bind:open={showModal} size="xs" autoclose={false} class="w-full">
   <form class="flex flex-col space-y-6" on:submit={_submit}>
     <h3 class="text-xl font-medium text-gray-900 dark:text-white p-0">
-      {#if state == SignInModalState.login}
+      {#if state == SignInState.login}
         {$LL.Signin()}
       {:else}
         {$LL.RegisterToOurPlatform()}
@@ -178,7 +178,7 @@
       label={$LL.Password()}
       required
     />
-    {#if state == SignInModalState.register}
+    {#if state == SignInState.register}
       <FloatingLabelInput
         bind:value={confirmPassword}
         style="outlined"
@@ -190,7 +190,7 @@
       />
     {/if}
 
-    {#if state == SignInModalState.login}
+    {#if state == SignInState.login}
       <div class="flex items-start">
         <Checkbox>{$LL.RememberMe()}</Checkbox>
         <a
@@ -202,7 +202,7 @@
     {/if}
 
     <div class="flex items-center">
-      {#if state == SignInModalState.login}
+      {#if state == SignInState.login}
         <button type="button" on:click={_toggleState} class="">
           <small>{$LL.NotAMemberYet()} </small>
         </button>
@@ -218,7 +218,7 @@
         <Spinner class="mr-3" size="4" />
       {/if}
 
-      {#if state == SignInModalState.login}
+      {#if state == SignInState.login}
         {$LL.Signin()}
       {:else}
         {$LL.Signup()}

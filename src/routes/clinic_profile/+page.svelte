@@ -1,10 +1,8 @@
 <script lang="ts">
+    import Clinics from "$lib/components/clinic_profile/tabs/clinics.svelte";
     import LL from "$lib/i18n/i18n-svelte";
     let tabs = [$LL.Clinics(), "Doctors", "Equipments", "Specialities"];
     let index: number = 0;
-    function setPage(i: number) {
-        index = i;
-    }
 </script>
 
 <div class="flex w-full h-full">
@@ -24,9 +22,9 @@
             </button>
         {/each}
     </div>
-    <div class="w-max h-full">
+    <div class="p-6 w-full h-full">
         {#if index == 0}
-            <label for={index.toString()}>body:{index}</label>
+            <Clinics />
         {:else if index == 1}
             <label for={index.toString()}>body:{index}</label>
         {:else}
