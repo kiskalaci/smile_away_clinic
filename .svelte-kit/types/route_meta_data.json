@@ -6,5 +6,8 @@
 	],
 	"/clinic_profile": [
 		"src/routes/+layout.ts"
+	],
+	"/clinics/[id=integer]": [
+		"src/routes/+layout.ts"
 	]
 }

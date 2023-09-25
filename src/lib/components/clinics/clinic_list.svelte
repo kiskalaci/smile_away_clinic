@@ -24,7 +24,7 @@
 </script>
 
 <div
-    class="grid xxs:grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+    class="grid xs:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
 >
     {#if fetchingClinics}
         {#each { length: 30 } as _}
