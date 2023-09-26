@@ -5,6 +5,7 @@
     import Specialties from "./specialties.svelte";
     import Divider from "../Divider.svelte";
     import { Button } from "flowbite-svelte";
+    import Equipments from "./equipments.svelte";
     export let clinic_id: string = "";
     let clinic: Clinic;
     let fetching: boolean = true;
@@ -27,15 +28,7 @@
     });
 </script>
 
-chr
 <div class="p-6">
-    <div class="flex items-center justify-between">
-        <h2>Specialities</h2>
-        <Button>
-            <i class="fa-regular fa-floppy-disk text-white pr-2" />
-            Save
-        </Button>
-    </div>
-    <Divider />
     <Specialties />
+    <Equipments />
 </div>
