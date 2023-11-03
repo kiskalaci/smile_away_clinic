@@ -91,6 +91,10 @@ type RootTranslation = {
 	 */
 	Calendar: string
 	/**
+	 * C​a​n​c​e​l
+	 */
+	Cancel: string
+	/**
 	 * C​a​t​e​g​o​r​y
 	 */
 	Category: string
@@ -175,6 +179,14 @@ type RootTranslation = {
 	 */
 	Email: string
 	/**
+	 * E​m​p​t​y
+	 */
+	Empty: string
+	/**
+	 * W​o​w​.​.​ ​s​u​c​h​ ​e​m​p​t​y
+	 */
+	EmptyResult: string
+	/**
 	 * E​n​d​ ​t​i​m​e
 	 */
 	EndTime: string
@@ -182,6 +194,14 @@ type RootTranslation = {
 	 * E​n​g​l​i​s​h
 	 */
 	English: string
+	/**
+	 * E​q​u​i​p​m​e​n​t
+	 */
+	Equipment: string
+	/**
+	 * E​q​u​i​p​m​e​n​t​s
+	 */
+	Equipments: string
 	/**
 	 * E​x​p​l​o​r​e
 	 */
@@ -270,6 +290,10 @@ type RootTranslation = {
 	 * L​e​s​s
 	 */
 	Less: string
+	/**
+	 * L​o​a​d​i​n​g
+	 */
+	Loading: string
 	/**
 	 * L​o​c​a​t​i​o​n
 	 */
@@ -363,6 +387,10 @@ type RootTranslation = {
 	 */
 	RequiredField: string
 	/**
+	 * R​e​t​r​y
+	 */
+	Retry: string
+	/**
 	 * R​e​v​i​e​w
 	 */
 	Review: string
@@ -422,6 +450,18 @@ type RootTranslation = {
 	 * S​o​c​i​a​l​ ​s​e​c​u​r​i​t​y​ ​n​u​m​b​e​r
 	 */
 	SocialSecurityNumber: string
+	/**
+	 * S​o​m​e​t​h​i​n​g​ ​w​e​n​t​ ​w​r​o​n​g
+	 */
+	SomethingWentWrong: string
+	/**
+	 * S​p​e​c​i​a​l​i​t​y
+	 */
+	Speciality: string
+	/**
+	 * S​p​e​c​i​a​l​i​t​i​e​s
+	 */
+	Specialities: string
 	/**
 	 * S​t​a​r​t​ ​t​i​m​e
 	 */
@@ -544,6 +584,10 @@ export type TranslationFunctions = {
 	 */
 	Calendar: () => LocalizedString
 	/**
+	 * Cancel
+	 */
+	Cancel: () => LocalizedString
+	/**
 	 * Category
 	 */
 	Category: () => LocalizedString
@@ -628,6 +672,14 @@ export type TranslationFunctions = {
 	 */
 	Email: () => LocalizedString
 	/**
+	 * Empty
+	 */
+	Empty: () => LocalizedString
+	/**
+	 * Wow.. such empty
+	 */
+	EmptyResult: () => LocalizedString
+	/**
 	 * End time
 	 */
 	EndTime: () => LocalizedString
@@ -635,6 +687,14 @@ export type TranslationFunctions = {
 	 * English
 	 */
 	English: () => LocalizedString
+	/**
+	 * Equipment
+	 */
+	Equipment: () => LocalizedString
+	/**
+	 * Equipments
+	 */
+	Equipments: () => LocalizedString
 	/**
 	 * Explore
 	 */
@@ -723,6 +783,10 @@ export type TranslationFunctions = {
 	 * Less
 	 */
 	Less: () => LocalizedString
+	/**
+	 * Loading
+	 */
+	Loading: () => LocalizedString
 	/**
 	 * Location
 	 */
@@ -816,6 +880,10 @@ export type TranslationFunctions = {
 	 */
 	RequiredField: () => LocalizedString
 	/**
+	 * Retry
+	 */
+	Retry: () => LocalizedString
+	/**
 	 * Review
 	 */
 	Review: () => LocalizedString
@@ -875,6 +943,18 @@ export type TranslationFunctions = {
 	 * Social security number
 	 */
 	SocialSecurityNumber: () => LocalizedString
+	/**
+	 * Something went wrong
+	 */
+	SomethingWentWrong: () => LocalizedString
+	/**
+	 * Speciality
+	 */
+	Speciality: () => LocalizedString
+	/**
+	 * Specialities
+	 */
+	Specialities: () => LocalizedString
 	/**
 	 * Start time
 	 */
