@@ -22,7 +22,7 @@
             "GET",
             "specialties"
         );
-        json.forEach(function (item: Map<string, string>) {
+        json.forEach((item: Map<string, string>) => {
             const spec = Specialty.fromJson(item);
             specialties.push(spec);
         });

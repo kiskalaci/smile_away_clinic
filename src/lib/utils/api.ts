@@ -5,7 +5,7 @@ export abstract class Api {
   static async request(
     method: string,
     path: string,
-    data: object = {}
+    data: object = {},
   ): Promise<Response> {
     const apiPath =
       variables.env === "development" ? variables.dev_host : variables.host;
@@ -36,6 +36,7 @@ export abstract class Api {
         }
 
         if (response.status >= 500) {
+          // eslint-disable-next-line no-debugger
           debugger;
           throw new Error(`status code ${response.status}`);
         }
@@ -51,12 +52,10 @@ export abstract class Api {
   static async requestBody<TResponse>(
     method: string,
     path: string,
-    data: object = {}
+    data: object = {},
   ): Promise<TResponse> {
     return await this.request(method, path, data)
-      .then((response) => {
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => data as TResponse)
       .catch((e: Error) => {
         console.error(e);

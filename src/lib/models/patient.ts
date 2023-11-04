@@ -26,7 +26,7 @@ export class Patient {
     files_url: string,
     date_of_birth: string,
     patient_email: string,
-    phone_number: string
+    phone_number: string,
   ) {
     this.id = id;
     this.first_name = first_name;

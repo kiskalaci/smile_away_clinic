@@ -5,7 +5,6 @@ import Cookies from "js-cookie";
 import type { LayoutLoad } from "./$types";
 
 export const load = (async (event) => {
-
   //!Language
   const lang: string = Cookies.get("language") ?? "en";
   Cookies.set("language", lang);
@@ -17,4 +16,3 @@ export const load = (async (event) => {
 
   return event.data;
 }) satisfies LayoutLoad;
-

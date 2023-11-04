@@ -1,7 +1,11 @@
-import { writable } from 'svelte/store';
-import { browser } from '$app/environment';
+import { writable } from "svelte/store";
+import { browser } from "$app/environment";
 
-const userName = browser && localStorage.getItem('username');
+const userName = browser && localStorage.getItem("username");
 
-export const username = writable((browser && userName && JSON.parse(userName)) || '');
-username.subscribe((v) => browser && (localStorage.username = JSON.stringify(v)));
+export const username = writable(
+  (browser && userName && JSON.parse(userName)) || "",
+);
+username.subscribe(
+  (v) => browser && (localStorage.username = JSON.stringify(v)),
+);
