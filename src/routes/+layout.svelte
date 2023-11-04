@@ -21,7 +21,7 @@
   });
 </script>
 
-<main class="app bg-gray-50 h-full">
+<main class="bg-gray-50 h-full">
   {#if $authStatus == AuthStatus.authenticated}
     <CustomNavbar />
     <div class="w-full h-full">
