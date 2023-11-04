@@ -1,6 +1,7 @@
 <script lang="ts">
     import ClinicList from "$lib/components/clinics/clinic_list.svelte";
     import Equipments from "$lib/components/clinics/equipments.svelte";
+    import Languages from "$lib/components/clinics/languages.svelte";
     import Specialties from "$lib/components/clinics/specialties.svelte";
     import LL from "$lib/i18n/i18n-svelte";
     let tabs = [
@@ -40,7 +41,7 @@
         {:else if index == 3}
             <Specialties />
         {:else if index == 4}
-            Clinic languages
+            <Languages />
         {:else}
             <label for={index.toString()}>body:{index}</label>
         {/if}

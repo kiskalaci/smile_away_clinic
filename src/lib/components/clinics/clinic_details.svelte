@@ -3,9 +3,8 @@
     import type { Clinic } from "../../models/clinic";
     import { onMount } from "svelte";
     import Specialties from "./specialties.svelte";
-    import Divider from "../Divider.svelte";
-    import { Button } from "flowbite-svelte";
     import Equipments from "./equipments.svelte";
+    import Languages from "./languages.svelte";
     export let clinic_id: string = "";
     let clinic: Clinic;
     let fetching: boolean = true;
@@ -31,4 +30,5 @@
 <div class="p-6">
     <Specialties />
     <Equipments />
+    <Languages />
 </div>
