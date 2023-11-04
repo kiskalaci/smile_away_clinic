@@ -49,6 +49,6 @@
   "dependencies": {
     "@sveltejs/adapter-node": "^1.1.4",
     "js-cookie": "^3.0.1",
-    "typesafe-i18n": "^5.21.0"
+    "typesafe-i18n": "5.26.2"
   }
 }

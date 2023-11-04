@@ -50,6 +50,7 @@ module.exports = {
     },
   },
   rules: {
+    "comma-dangle": [2, "always-multiline"],
     "arrow-body-style": ["error", "as-needed"],
     "prefer-arrow-callback": [
       "error",
@@ -60,13 +61,13 @@ module.exports = {
     "import/extensions": 0,
     "import/no-extraneous-dependencies": 0,
     "import/no-mutable-exports": 0,
-    "import/no-duplicates": 0,
-    "import-no-duplicates-prefix-resolved-path/no-duplicates": [
-      "error",
-      {
-        prefixResolvedPathWithImportName: true,
-      },
-    ],
+    // "import/no-duplicates": 0,
+    // "import-no-duplicates-prefix-resolved-path/no-duplicates": [
+    //   "error",
+    //   {
+    //     prefixResolvedPathWithImportName: true,
+    //   },
+    // ],
     "no-restricted-imports": ["error", { paths: ["$env/static/private"] }],
     "no-self-assign": 0,
     "@typescript-eslint/no-throw-literal": 0,

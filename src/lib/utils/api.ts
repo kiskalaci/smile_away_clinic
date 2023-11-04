@@ -13,6 +13,7 @@ export abstract class Api {
     const noData = method === "GET" || method === "DELETE";
     const auth_token: string = Cookies.get("auth_token") ?? "";
     const language: string = Cookies.get("language") ?? "";
+
     return fetch(`${apiPath}/${path}`, {
       method: method,
       mode: "cors",
