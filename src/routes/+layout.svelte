@@ -5,15 +5,14 @@
 
   import CustomNavbar from "$lib/components/CustomNavbar.svelte";
 
+  import ClinicSelect from "$lib/components/clinics/ClinicSelect.svelte";
   import SignIn from "$lib/components/SignIn.svelte";
   import { AuthStatus } from "$lib/enums/auth_status";
+  import { selectedClinicId } from "$lib/stores/selected_clinic";
   import { authStatus } from "$lib/utils/auth";
+  import { Spinner } from "flowbite-svelte";
   import Cookies from "js-cookie";
   import { onMount } from "svelte";
-  import { Spinner } from "flowbite-svelte";
-  import { selectedClinicId } from "$lib/stores/selected_clinic";
-  import ClinicSelect from "$lib/components/clinics/clinic_select.svelte";
-  import { subscribe } from "svelte/internal";
   let loading: boolean = true;
   onMount(() => {
     const token = Cookies.get("auth_token");

@@ -367,6 +367,10 @@ type RootTranslation = {
 	 */
 	Price: string
 	/**
+	 * P​r​i​c​e​ ​l​i​s​t
+	 */
+	PriceList: string
+	/**
 	 * P​r​i​v​a​c​y​ ​P​o​l​i​c​y
 	 */
 	PrivacyPolicy: string
@@ -859,6 +863,10 @@ export type TranslationFunctions = {
 	 * Price
 	 */
 	Price: () => LocalizedString
+	/**
+	 * Price list
+	 */
+	PriceList: () => LocalizedString
 	/**
 	 * Privacy Policy
 	 */

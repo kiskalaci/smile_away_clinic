@@ -96,6 +96,7 @@ const en: BaseTranslation = {
   Phone: "Phone number",
   Product: "Product",
   Price: "Price",
+  PriceList: "Price list",
   PrivacyPolicy: "Privacy Policy",
   Rating: "Ratings",
   RegisterToOurPlatform: "Register to our platform",

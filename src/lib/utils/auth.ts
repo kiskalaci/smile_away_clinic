@@ -11,14 +11,14 @@ export const handleSession = async (res: Response) => {
 
 export const logout = async () => {
   if (typeof window != "undefined") {
-    await Cookies.remove("user", {
+    Cookies.remove("user", {
       path: "",
       expires: 30,
       secure: false,
       httpOnly: true,
     });
 
-    await Cookies.remove("auth_token");
+    Cookies.remove("auth_token");
 
     browser && localStorage.removeItem("username");
 

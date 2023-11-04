@@ -95,6 +95,7 @@ const hu: BaseTranslation = {
   Phone: "Telefonszám",
   Product: "Termék",
   Price: "Ár",
+  PriceList: "Ár lista",
   PrivacyPolicy: "Privacy Policy",
   Rating: "Értékelés",
   Ratings: "Értékelések",

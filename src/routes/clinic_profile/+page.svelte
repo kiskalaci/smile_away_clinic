@@ -1,8 +1,9 @@
 <script lang="ts">
-  import ClinicList from "$lib/components/clinics/clinic_list.svelte";
-  import Equipments from "$lib/components/clinics/equipments.svelte";
-  import Languages from "$lib/components/clinics/languages.svelte";
-  import Specialties from "$lib/components/clinics/specialties.svelte";
+  import CreatePriceList from "$lib/components/clinics/CreatePriceList.svelte";
+  import ClinicList from "$lib/components/clinics/ClinicList.svelte";
+  import Equipments from "$lib/components/clinics/Equipments.svelte";
+  import Languages from "$lib/components/clinics/Languages.svelte";
+  import Specialties from "$lib/components/clinics/Specialties.svelte";
   import LL from "$lib/i18n/i18n-svelte";
   let tabs = [
     $LL.Clinics(),
@@ -10,6 +11,7 @@
     "Equipments",
     $LL.Specialities(),
     $LL.Languages(),
+    $LL.PriceList(),
   ];
   let index: number = 0;
 </script>
@@ -42,6 +44,8 @@
       <Specialties />
     {:else if index == 4}
       <Languages />
+    {:else if index == 5}
+      <CreatePriceList />
     {:else}
       <label for={index.toString()}>body:{index}</label>
     {/if}
