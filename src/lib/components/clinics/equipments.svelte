@@ -1,15 +1,16 @@
 <script lang="ts">
-  import { PageMode, canEdit } from "$lib/enums/page_mode";
+  import { canEdit, PageMode } from "$lib/enums/page_mode";
   import LL from "$lib/i18n/i18n-svelte";
   import doge from "$lib/images/empty_doge.png";
   import sadFace from "$lib/images/sad_face.png";
   import type { Equipment } from "$lib/models/equipment";
   import { selectedClinicId } from "$lib/stores/selected_clinic";
+  import { addToast } from "$lib/stores/toast_store";
   import { Api } from "$lib/utils/api";
   import { Button, Spinner } from "flowbite-svelte";
   import Divider from "../Divider.svelte";
+  import Toggle from "../form_inputs/Toggle.svelte";
   import SectionMessage from "../SectionMessage.svelte";
-  import Toggle from "../Toggle.svelte";
 
   let pageMode = PageMode.view;
   let formDirty = false;
@@ -49,20 +50,32 @@
 
   async function saveChanges(): Promise<void> {
     let ids = selectedIds();
-
     const data = {
       clinic: {
         dental_equipments: ids,
       },
     };
 
+    console.log("selected clinic" + $selectedClinicId);
+    console.log(data);
+    debugger;
+
     try {
-      await Api.requestBody(
-        "POST",
-        `clinics/${$selectedClinicId}/add_equipments`,
+      await Api.request(
+        "PATCH",
+        `clinics/${$selectedClinicId}/update_equipments`,
         data,
       );
+      addToast({
+        type: "success",
+        message: $LL.SuccesfulOperation(),
+      });
     } catch (error) {
+      debugger;
+      addToast({
+        type: "error",
+        message: $LL.SomethingWentWrong(),
+      });
       console.log(error);
     }
     pageMode = PageMode.view;

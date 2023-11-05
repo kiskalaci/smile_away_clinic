@@ -31,14 +31,11 @@ export abstract class Api {
         if (response.ok) {
           return response;
         }
-
         if (response.status === 401) {
           //refreshtoken
         }
 
         if (response.status >= 500) {
-          // eslint-disable-next-line no-debugger
-          debugger;
           throw new Error(`status code ${response.status}`);
         }
 

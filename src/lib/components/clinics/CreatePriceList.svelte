@@ -8,7 +8,6 @@
   import { Button, Spinner } from "flowbite-svelte";
   import Divider from "../Divider.svelte";
   import SectionMessage from "../SectionMessage.svelte";
-  import Toggle from "../Toggle.svelte";
 
   let pageMode: PageMode = PageMode.view;
   let skeleton: price_list_skeleton;
@@ -20,7 +19,7 @@
   async function getSkeleton(): Promise<price_list_skeleton> {
     const skeleton = await Api.requestBody<price_list_skeleton>(
       "GET",
-      "price_list_skeleton"
+      "price_list_skeleton",
     );
     return skeleton;
   }
@@ -66,12 +65,7 @@
       class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xxl:grid-cols-4 gap-2"
     >
       {#each result.categories as category (category.id)}
-        <div class="bg-white rounded-md">
-          <Toggle
-            label={category.category_name}
-            disabled={!canEdit(pageMode)}
-          />
-        </div>
+        <div class="bg-white rounded-md" />
       {/each}
     </div>
   {:else}

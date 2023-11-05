@@ -1,14 +1,14 @@
 <script lang="ts">
+  import { PageMode, canEdit } from "$lib/enums/page_mode";
+  import LL from "$lib/i18n/i18n-svelte";
+  import doge from "$lib/images/empty_doge.png";
+  import sadFace from "$lib/images/sad_face.png";
+  import type { Language } from "$lib/models/language";
   import { Api } from "$lib/utils/api";
   import { Button, Spinner } from "flowbite-svelte";
   import Divider from "../Divider.svelte";
-  import { PageMode, canEdit } from "$lib/enums/page_mode";
-  import LL from "$lib/i18n/i18n-svelte";
-  import Toggle from "../Toggle.svelte";
   import SectionMessage from "../SectionMessage.svelte";
-  import sadFace from "$lib/images/sad_face.png";
-  import doge from "$lib/images/empty_doge.png";
-  import type { Language } from "$lib/models/language";
+  import Toggle from "../form_inputs/Toggle.svelte";
 
   let pageMode: PageMode = PageMode.view;
   let showButtons: boolean = true;
@@ -28,7 +28,7 @@
 
       const json = await Api.requestBody<Map<string, number>>(
         "GET",
-        "languages"
+        "languages",
       );
       languages = [];
       // for (var i in json) {
@@ -96,6 +96,7 @@
           <Toggle
             label="{lang.name} {lang.flag}"
             disabled={!canEdit(pageMode)}
+            bind:value={lang.selected}
           />
         </div>
       {/each}
