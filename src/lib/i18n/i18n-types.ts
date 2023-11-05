@@ -55,6 +55,10 @@ type RootTranslation = {
 	 */
 	And: string
 	/**
+	 * A​n​ ​e​r​r​o​r​ ​h​a​p​p​e​n​e​d
+	 */
+	AnErrorHappened: string
+	/**
 	 * A​p​p​o​i​n​t​m​e​n​t
 	 */
 	Appointment: string
@@ -202,6 +206,10 @@ type RootTranslation = {
 	 * E​q​u​i​p​m​e​n​t​s
 	 */
 	Equipments: string
+	/**
+	 * E​r​r​o​r
+	 */
+	Error: string
 	/**
 	 * E​x​p​l​o​r​e
 	 */
@@ -471,6 +479,18 @@ type RootTranslation = {
 	 */
 	StartTime: string
 	/**
+	 * S​u​c​c​e​s​s
+	 */
+	Success: string
+	/**
+	 * S​u​c​c​e​s​f​u​l
+	 */
+	Succesful: string
+	/**
+	 * S​u​c​c​e​s​f​u​l​ ​o​p​e​r​a​t​i​o​n
+	 */
+	SuccesfulOperation: string
+	/**
 	 * Y​o​u​ ​s​u​c​c​e​s​f​u​l​l​y​ ​s​i​g​n​e​d​ ​u​p​!
 	 */
 	SuccesfulSignUp: string
@@ -551,6 +571,10 @@ export type TranslationFunctions = {
 	 * And
 	 */
 	And: () => LocalizedString
+	/**
+	 * An error happened
+	 */
+	AnErrorHappened: () => LocalizedString
 	/**
 	 * Appointment
 	 */
@@ -699,6 +723,10 @@ export type TranslationFunctions = {
 	 * Equipments
 	 */
 	Equipments: () => LocalizedString
+	/**
+	 * Error
+	 */
+	Error: () => LocalizedString
 	/**
 	 * Explore
 	 */
@@ -967,6 +995,18 @@ export type TranslationFunctions = {
 	 * Start time
 	 */
 	StartTime: () => LocalizedString
+	/**
+	 * Success
+	 */
+	Success: () => LocalizedString
+	/**
+	 * Succesful
+	 */
+	Succesful: () => LocalizedString
+	/**
+	 * Succesful operation
+	 */
+	SuccesfulOperation: () => LocalizedString
 	/**
 	 * You succesfully signed up!
 	 */

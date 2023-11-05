@@ -7,6 +7,7 @@
 
   import ClinicSelect from "$lib/components/clinics/ClinicSelect.svelte";
   import SignIn from "$lib/components/SignIn.svelte";
+  import ToastMessages from "$lib/components/toast/ToastMessages.svelte";
   import { AuthStatus } from "$lib/enums/auth_status";
   import { selectedClinicId } from "$lib/stores/selected_clinic";
   import { authStatus } from "$lib/utils/auth";
@@ -21,6 +22,10 @@
   });
 </script>
 
+<!-- Toast Message Component -->
+<ToastMessages />
+
+<!-- Main Content -->
 <main class="bg-gray-50 h-full">
   {#if $authStatus == AuthStatus.authenticated}
     <CustomNavbar />
