@@ -1,39 +1,82 @@
 <script lang="ts">
-  import { PageMode, canEdit } from "$lib/enums/page_mode";
+  import type { Specialty } from "$/lib/models/specialty";
+  import { canEdit, PageMode } from "$lib/enums/page_mode";
   import LL from "$lib/i18n/i18n-svelte";
   import doge from "$lib/images/empty_doge.png";
   import sadFace from "$lib/images/sad_face.png";
-  import { Specialty } from "$lib/models/specialty";
+  import { selectedClinicId } from "$lib/stores/selected_clinic";
+  import { addToast } from "$lib/stores/toast_store";
   import { Api } from "$lib/utils/api";
   import { Button, Spinner } from "flowbite-svelte";
   import Divider from "../Divider.svelte";
-  import SectionMessage from "../SectionMessage.svelte";
   import Toggle from "../form_inputs/Toggle.svelte";
+  import SectionMessage from "../SectionMessage.svelte";
 
-  let pageMode: PageMode = PageMode.view;
+  let pageMode = PageMode.view;
+  let formDirty = false;
   let specialties: Specialty[] = [];
+
+  function selectedIds(): number[] {
+    let ids: number[] = [];
+    if (!specialties || specialties.length == 0) {
+      return ids;
+    }
+    ids = specialties.filter((sp) => sp.is_selected).map((i) => i.id);
+    return ids;
+  }
+
+  let request = getSpecialties();
 
   function toggle() {
     pageMode = pageMode == PageMode.edit ? PageMode.view : PageMode.edit;
   }
 
-  async function getSpecialities(): Promise<Specialty[]> {
-    const json = await Api.requestBody<Map<string, string>[]>(
+  function cancel() {
+    pageMode = PageMode.view;
+    if (formDirty) {
+      refetch();
+      formDirty = false;
+    }
+  }
+
+  function refetch() {
+    request = getSpecialties();
+  }
+
+  async function getSpecialties(): Promise<Specialty[]> {
+    specialties = await Api.requestBody<Specialty[]>(
       "GET",
-      "specialties",
+      `clinics/${$selectedClinicId}/specialties`,
     );
-    json.forEach((item: Map<string, string>) => {
-      const spec = Specialty.fromJson(item);
-      specialties.push(spec);
-    });
-    specialties = specialties;
     return specialties;
   }
 
-  let request = getSpecialities();
-
-  function refetch() {
-    request = getSpecialities();
+  async function saveChanges(): Promise<void> {
+    let ids = selectedIds();
+    const data = {
+      clinic: {
+        specialties: ids,
+      },
+    };
+    console.log(data);
+    try {
+      await Api.request(
+        "POST",
+        `clinics/${$selectedClinicId}/add_or_update_specialties`,
+        data,
+      );
+      addToast({
+        type: "success",
+        message: $LL.SuccesfulOperation(),
+      });
+    } catch (error) {
+      addToast({
+        type: "error",
+        message: $LL.SomethingWentWrong(),
+      });
+    }
+    refetch();
+    pageMode = PageMode.view;
   }
 </script>
 
@@ -41,11 +84,11 @@
   <h2 class="font-normal text-xl">{$LL.Specialities()}</h2>
   {#if canEdit(pageMode)}
     <div>
-      <Button on:click={toggle}>
+      <Button on:click={cancel}>
         <i class="fa-solid fa-xmark text-white pr-2" />
         {$LL.Cancel()}
       </Button>
-      <Button color="green">
+      <Button color="green" on:click={saveChanges}>
         <i class="fa-regular fa-floppy-disk text-white pr-2" />
         {$LL.Save()}
       </Button>
@@ -58,6 +101,7 @@
   {/if}
 </div>
 <Divider />
+
 {#await request}
   <div class="flex justify-center content-center w-full">
     <div>
@@ -73,9 +117,10 @@
       {#each array as sp (sp.id)}
         <div class="bg-white rounded-md">
           <Toggle
+            on:change={() => (formDirty = true)}
             label={sp.name}
             disabled={!canEdit(pageMode)}
-            bind:value={sp.selected}
+            bind:value={sp.is_selected}
           />
         </div>
       {/each}

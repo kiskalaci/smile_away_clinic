@@ -10,6 +10,7 @@
   <div class="relative">
     <div class="flex">
       <input
+        on:change
         type="checkbox"
         bind:checked={value}
         class="sr-only peer"

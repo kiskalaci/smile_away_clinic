@@ -28,6 +28,8 @@ export abstract class Api {
       ...(!noData ? { body: JSON.stringify(data) } : null),
     })
       .then((response: Response) => {
+        // eslint-disable-next-line no-debugger
+        debugger;
         if (response.ok) {
           return response;
         }
@@ -35,7 +37,7 @@ export abstract class Api {
           //refreshtoken
         }
 
-        if (response.status >= 500) {
+        if (response.status >= 400) {
           throw new Error(`status code ${response.status}`);
         }
 

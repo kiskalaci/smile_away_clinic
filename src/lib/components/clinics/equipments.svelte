@@ -25,13 +25,21 @@
     return ids;
   }
 
-  function cancel() {
-    pageMode = PageMode.view;
-    refetch();
-  }
+  let request = getEquipments();
 
   function toggle() {
     pageMode = pageMode == PageMode.edit ? PageMode.view : PageMode.edit;
+  }
+  function cancel() {
+    pageMode = PageMode.view;
+    if (formDirty) {
+      refetch();
+      formDirty = false;
+    }
+  }
+
+  function refetch() {
+    request = getEquipments();
   }
 
   async function getEquipments(): Promise<Equipment[]> {
@@ -42,12 +50,6 @@
     return equipments;
   }
 
-  let request = getEquipments();
-
-  function refetch() {
-    request = getEquipments();
-  }
-
   async function saveChanges(): Promise<void> {
     let ids = selectedIds();
     const data = {
@@ -55,15 +57,11 @@
         dental_equipments: ids,
       },
     };
-
-    console.log("selected clinic" + $selectedClinicId);
     console.log(data);
-    debugger;
-
     try {
       await Api.request(
-        "PATCH",
-        `clinics/${$selectedClinicId}/update_equipments`,
+        "POST",
+        `clinics/${$selectedClinicId}/add_or_update_equipments`,
         data,
       );
       addToast({
@@ -71,13 +69,12 @@
         message: $LL.SuccesfulOperation(),
       });
     } catch (error) {
-      debugger;
       addToast({
         type: "error",
         message: $LL.SomethingWentWrong(),
       });
-      console.log(error);
     }
+    refetch();
     pageMode = PageMode.view;
   }
 </script>
@@ -119,6 +116,7 @@
       {#each array as eq (eq.id)}
         <div class="bg-white rounded-md">
           <Toggle
+            on:change={() => (formDirty = true)}
             label={eq.name}
             disabled={!canEdit(pageMode)}
             bind:value={eq.is_selected}
